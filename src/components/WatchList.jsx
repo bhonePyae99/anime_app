@@ -1,19 +1,19 @@
-import useGetAnimes from "../hooks/useGetAnimes";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Loading from "../context/LoadingContext";
 import Loader from "./commons/Loader";
 import { useContext } from "react";
+import WatchListContext from "./../context/WatchListContext";
 
-const AllTopAnimes = () => {
-  const animes = useGetAnimes("https://api.jikan.moe/v3/top/anime");
+const WatchList = () => {
+  const MyWatchListContext = useContext(WatchListContext);
+  const animes = MyWatchListContext.watchList;
   const navigate = useNavigate();
   const LoadingContext = useContext(Loading);
-
   return (
     <div className="container-lg">
       <div className="text-center">
-        <h3 className="mt-5">Top Animes of All Times</h3>
+        <h3 className="mt-5">Your Watchlists</h3>
       </div>
       <div className="container-lg mt-3">
         {LoadingContext.loading ? (
@@ -48,4 +48,4 @@ const AllTopAnimes = () => {
   );
 };
 
-export default AllTopAnimes;
+export default WatchList;

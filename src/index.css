@@ -34,6 +34,13 @@
   top: 5px;
 }
 
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 @media (max-width: 375px) {
   .anime-display {
     width: 10rem;
