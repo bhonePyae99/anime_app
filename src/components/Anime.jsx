@@ -30,6 +30,7 @@ const Anime = () => {
     };
     getAnime();
   }, [url]);
+  console.log(anime.airing);
   return (
     <div className="container-lg mt-5">
       {LoadingContext.loading ? (
@@ -40,12 +41,45 @@ const Anime = () => {
           css={override}
         />
       ) : (
-        <div className="row justify-content-center">
-          <div className="col-lg-3 bg-light text-center">
+        <div className="row justify-content-center g-3">
+          <div className="col-md-3 text-center justify-content-center">
+            <h4 className="text-muted">{anime.title}</h4>
             <img src={anime.image_url} className="img-fluid" alt="" />
+            <div className="btn-group mt-2">
+              <button className="btn btn-success btn-sm">
+                Add To Favorites
+              </button>
+              <button className="btn btn-secondary btn-sm">
+                Add To WatchList
+              </button>
+            </div>
           </div>
           <div className="col-lg-6 bg-light">
-            <h3>{anime.title}</h3>
+            <h4>Episodes: {anime.episodes}</h4>
+            <div className="row">
+              <div className="col-3 border-end border-dark align-items-center">
+                <span class="badge bg-info text-dark">
+                  <i class="bi bi-star-fill"></i> {anime.score}
+                </span>
+              </div>
+              <div className="col-3 border-end border-dark text-center align-items-center">
+                {anime.premiered}
+              </div>
+              <div className="col-3 border-end border-dark text-center align-items-center">
+                {anime.type}
+              </div>
+              <div className="col-3 text-center">
+                {anime.airing === false ? anime.aired.string : "Airing"}
+              </div>
+            </div>
+            <h3 className="mt-4">Synopsis</h3>
+            <p className="text-muted">{anime.synopsis}</p>
+            <a
+              href={anime.trailer_url}
+              className="btn btn-primary mt-2 float-end"
+            >
+              Watch Trailer
+            </a>
           </div>
         </div>
       )}
