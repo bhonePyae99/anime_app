@@ -1,13 +1,43 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.anime-display {
+  position: relative;
+  padding: 0 1rem;
+  border: 10px solid white;
+  width: 14rem;
+  height: 20rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-shadow: inset 0 -70px 90px black;
+}
+
+.anime-display img {
+  width: 100%;
+  height: 100%;
+}
+
+.score {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+@media (max-width: 375px) {
+  .anime-display {
+    width: 10rem;
+    height: 15rem;
+    font-size: 0.9rem;
+  }
 }

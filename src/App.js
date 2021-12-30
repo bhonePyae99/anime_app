@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import NavBar from "./components/NavBar";
+import TopAnimes from "./components/TopAnimes";
+import Anime from "./components/Anime";
+import AllTopAnimes from "./components/AllTopAnimes";
+import Loading from "./context/LoadingContext";
 
 function App() {
+  const [loading, setLoading] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Loading.Provider value={{ loading, setLoading }}>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<TopAnimes />} />
+          <Route path="/topanimes" element={<AllTopAnimes />} />
+          <Route path="/anime/:id" element={<Anime />} />
+        </Routes>
+      </div>
+    </Loading.Provider>
   );
 }
 
