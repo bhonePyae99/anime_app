@@ -7,7 +7,8 @@ import WatchListContext from "./../context/WatchListContext";
 
 const WatchList = () => {
   const MyWatchListContext = useContext(WatchListContext);
-  const animes = MyWatchListContext.watchList;
+  const animes = JSON.parse(localStorage.getItem("watchList"));
+  console.log(animes);
   const navigate = useNavigate();
   const LoadingContext = useContext(Loading);
   return (

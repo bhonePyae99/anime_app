@@ -46,11 +46,16 @@ const Anime = () => {
   };
 
   const addToWatchList = (item) => {
+    const anime = {
+      mal_id: item.mal_id,
+      image_url: item.image_url,
+      title: item.title,
+    };
     if (alreadyAdded(anime)) {
-      const newWatchList = watchList.filter((i) => i.mal_id !== item.mal_id);
+      const newWatchList = watchList.filter((i) => i.mal_id !== anime.mal_id);
       MyWatchListContext.setWatchList(newWatchList);
     } else {
-      watchList.push(item);
+      watchList.push(anime);
       MyWatchListContext.setWatchList(watchList);
     }
   };

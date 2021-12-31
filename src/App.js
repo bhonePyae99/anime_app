@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import TopAnimes from "./components/TopAnimes";
 import Anime from "./components/Anime";
@@ -12,6 +12,11 @@ import WatchList from "./components/WatchList";
 function App() {
   const [loading, setLoading] = useState(false);
   const [watchList, setWatchList] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("watchList", JSON.stringify(watchList));
+  }, [watchList]);
+
   return (
     <WatchListContext.Provider value={{ watchList, setWatchList }}>
       <Loading.Provider value={{ loading, setLoading }}>
