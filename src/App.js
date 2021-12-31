@@ -14,6 +14,10 @@ function App() {
   const [watchList, setWatchList] = useState([]);
 
   useEffect(() => {
+    setWatchList(JSON.parse(localStorage.getItem("watchList")) || []);
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("watchList", JSON.stringify(watchList));
   }, [watchList]);
 
