@@ -3,10 +3,8 @@ import { motion } from "framer-motion";
 import Loading from "../context/LoadingContext";
 import Loader from "./commons/Loader";
 import { useContext } from "react";
-import WatchListContext from "./../context/WatchListContext";
 
 const WatchList = () => {
-  const MyWatchListContext = useContext(WatchListContext);
   const animes = JSON.parse(localStorage.getItem("watchList"));
   console.log(animes);
   const navigate = useNavigate();
